@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Resume</title>
+	<style type="text/css">
+		body
+		{
+			font-family: Arial, Helvetica, sans-serif;
+		}
+	</style>
+</head>
+<body style="font-size: 10px">
+	<div style="border-style: double; margin: 3% 20% ">
+	<h1 style="text-align: left;">{{f_name}} {{l_name}}</h1>
+	<p>Contact:</p>
+	<p>{{email}}</p>
+	<p>{{contact}}</p>
+
+	<hr>
+	<div style="padding: 3%">
+	<b>Career Objective:</b><br>
+	<p>To secure a challenging position in a reputable organization to expand my learnings, knowledge, and skills.</p>
+	<br>
+	<b>Education Details: </b>
+	
+		<ul>
+			<li>Completed my 10th standard from {{schoolname}} with an overall percentage of {{10th_percentage}} in {{10year}} </li>
+			{% if diplomacname %}
+			<li>Completed my Diploma from {{diplomacname}} with an overall percentage of {{diploma_percentage}} in {{diplomayear}} </li>
+			{% else %}
+			<li>Completed my Intermediate from {{intercname}} with an overall percentage of {{inter_percentage}} in {{interyear}} </li>
+			{% endif %}
+			<li>Completed my B.Tech from {{collegename}} with an overall percentage of {{clg_percentage}} in {{month}}</li>
+		</ul>
+	
+	
+	<br>
+	
+	{% if certificateData.0.0 %}
+	<b>Certifications:</b>
+	<br>
+	<ul>
+	{% for x,y in certificateData %}
+	{% if x %}
+	<li><b>{{x}}</b> from <em>{{y}}</em></li>
+	{% endif %}
+	{% endfor %}
+	</ul>
+	{% endif %} 
+
+
+	{% if workExperienceData.0.0 %}
+	<b>WORK EXPERIENCE OR INTERNSHIP DETAILS</b>
+	<br>
+	<ul>
+		{% for a,b,c,d,e in workExperienceData %}
+		{% if a %}
+		<li>Worked as a {{a}} in {{b}} </li>
+		<p>Duration: {{c}} to {{d}}</p>
+		<p>WORK DESCRIPTION:</p>
+		<p>{{e}}</p>
+		{% endif %}
+		{% endfor %}
+	</ul>
+	{% endif %}
+
+	{% if skills.0 %}
+	<b>Skills</b>
+	<br>
+	<ul>
+		{% for i in skills %}
+		{% if i %}
+		<li>{{i}}</li>
+		{% endif %}
+		{% endfor %}
+	</ul>
+	{% endif %}
+
+
+	{% if projectData.0.0 %}
+	<b>PROJECTS</b>
+	<br>
+		<ol>
+		{% for x,y in projectData %}
+		{% if x %}
+		<li><b>{{x}}</b>:</li>
+		<p>{{y}}</p>
+		{% endif %}
+		{%endfor%}
+		</ol>
+	{% endif %}
+
+
+	{% if awards.0 %}
+	<b>AWARDS</b>
+	<br>
+		<ul>
+			{% for x in awards %}
+			{% if x %}
+				<li>{{x}}</li>
+			{% endif %}
+			{% endfor %}
+		</ul>
+	{% endif %}
+	
+	
+
+</body>
+
+</html>

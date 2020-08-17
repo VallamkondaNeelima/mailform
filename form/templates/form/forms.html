@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% load static %}
+	<title>Form For Email</title>
+	<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="{% static 'form/forms.css' %}">
+
+</head>
+<body style="font-family: 'Source Code Pro', monospace " >
+	<div style="margin: 2% 10%; background-color: #f2f2f2; border-radius:10px; box-shadow: 2px 2px ">
+
+	<form  action="{% url 'forms:submit' %}" method="post">
+
+		{% csrf_token %}
+
+		<div id="contact">
+		<h1>CONTACT DETAILS</h1>
+		<hr>
+		<label for="first" ><b>ENTER YOUR FIRST NAME: </b></label>
+		<br>
+		<input type="text" id="first" name="f_name"  ><br>
+		<label for="last"><b>ENTER YOUR LAST NAME: </b></label>
+		<br>
+		<input type="text" id="last" name="l_name" ><br>
+		<label for="email"><b>ENTER YOUR EMAIL: </b></label>
+		<br>
+		<input type="email" id="email" name="email" required><br>
+		<label for="contact"><b>ENTER YOUR CONTACT NUMBER: </b></label>
+		<input type="number" id="contact" name="contact" required >
+
+
+		<h1>EDUCATIONAL DETAILS</h1>
+		<hr><br>
+		<b >DETAILS OF 10th: </b><br>
+		<input type="text"  name="schoolname"  placeholder="School Name" ><br>
+		Completion Year:<br> <input type="month"  name="10year" >
+		<input type="number"  name="10th_percentage" placeholder="Percentage" step="0.01"><br><br>
+		<b>DETAILS OF DIPLOMA[*FILL IF YOU ARE DIPLOMA STUDENT*]</b>
+		<input type="text"  name="diplomacname" placeholder=" DIPLOMA COLLEGE NAME" ><br>
+		Completion Year: <br><input type="month"  name="diplomayear" placeholder="Passed out Year"  >
+		<input type="number"  name="diploma_percentage" placeholder="Percentage" step="0.01" >
+		<br><br>
+		<b>DETAILS OF INTERMEDIATE[*FILL IF YOU ARE INTER STUDENT*]</b>
+		<input type="text"  name="intercname" placeholder="INTER COLLEGE NAME" ><br>
+		Completion Year: <br><input type="month"  name="interyear" placeholder="Passed out Year"  >
+		<input type="number"  name="inter_percentage" placeholder="Percentage" step="0.01" >
+		<br><br>
+		<b>DETAILS OF GRADUATION</b><br>
+		<input type="text"  name="collegename" placeholder="BTECH COLLEGE NAME" >
+		<br>Completion Year: <br><input type="month"  name="clgyear" placeholder="Passed out Year"  >
+		<input type="number"  name="clg_percentage" placeholder="Percentage" step="0.01" >
+	</div>
+
+
+	<div id="certificates">
+		<h1>CERTIFICATIONS</h1>
+		<hr>
+
+		<div class="sub-certificates">
+			<div class="box"><input type="text" name="certificate[]" placeholder="Certificate-name"> <input type="text" name="institute[]" placeholder="Institute-name"></div>
+			<br>
+		</div>
+		<button  type="button" onclick="myfun()">ADD CERTIFICATION</button>
+	</div>
+
+	<div id="work_experience">
+		<h1>WORK EXPERIENCE OR INTERNSHIP DETAILS</h1>
+		<hr>
+		<div>
+		<b>INTERNSHIP EXPERIENCE</b>
+		<input type="text" name="role[]" placeholder="JOB-ROLE"><br>
+		<input type="text" name="company[]" placeholder="Company Name"><br>
+		DURATION:
+		<br><div><input type="month" name="from[]" > to <input type="month" name="to[]" ></div>
+		<textarea placeholder="SHORT DESCRIPTION ABOUT YOUR EXPERIENCE" name="internexp[]"></textarea><br>
+		</div>
+	</div>
+	<button type="button" onclick="myfun1()">ADD EXPERIENCE</button>
+
+
+	<div id="skills">
+		<h2>SKILLS</h2>
+		<div ><input type="text" name="skill[]" placeholder="SKILL"> </div>
+		
+	</div>
+		<button type="button" onclick="myfun3()">ADD SKILL</button>
+
+
+	<div id="awards">
+		<h2>AWARDS/ACHIEVEMENTS</h2>
+		<div><input type="text" name="award[]" placeholder="AWARD-NAME"></div>
+	</div>
+	<button type="button" onclick="myfun4()">ADD AWARD</button>
+
+
+	<div id="projects">
+		<h2>PROJECT DETAILS</h2>
+		<div><input type="text" name="project[]" placeholder="PROJECT_NAME" >
+		<textarea  placeholder="DESCRIPTION ABOUT YOUR PROJECT" name="d[]" ></textarea></div>
+	</div>
+	<button type="button" onclick="myfun5()">ADD PROJECTS</button>
+
+	<div>
+		<input type="submit" value="Submit">
+	</div>
+	
+</form>
+</div>
+
+<script type="text/javascript" src="{% static 'form/forms.js' %}"></script>
+
+</body>
+</html>
